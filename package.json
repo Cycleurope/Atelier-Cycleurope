@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.0.0",
+    "cross-env": "^5.1",
+    "jquery": "^3.4.1",
+    "laravel-mix": "^4.0.7",
+    "lodash": "^4.17.13",
+    "popper.js": "^1.12",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.20.1",
+    "sass-loader": "7.*",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.10",
+    "worker-loader": "^2.0.0"
+  },
+  "name": "fleetmanager",
+  "description": "<p align=\"center\"><img src=\"https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg\" width=\"400\"></p>",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cycleurope/rstock2020.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cycleurope/rstock2020/issues"
+  },
+  "homepage": "https://github.com/Cycleurope/rstock2020#readme",
+  "dependencies": {
+    "cropperjs": "^1.5.6",
+    "dropzone": "^5.7.0",
+    "fuse.js": "^3.4.6",
+    "idb-keyval": "^3.2.0",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "keycode": "^2.2.0",
+    "laravel-echo": "^1.6.1",
+    "lottie-web": "^5.6.5",
+    "masonry": "0.0.2",
+    "masonry-layout": "^4.2.2",
+    "music-metadata-browser": "^2.0.4",
+    "plyr": "^3.5.10",
+    "socket.io-client": "^2.3.0",
+    "vue-awesome": "v2",
+    "vue-clipboard2": "^0.3.1",
+    "vue-focuspoint-component": "^2.0.1",
+    "vue-image-compare2": "^0.8.2",
+    "vue-infinite-loading": "^2.4.4",
+    "vue-input-autowidth": "^1.0.10",
+    "vue-ls": "^3.2.1",
+    "vue-notif": "^1.1.10",
+    "vue-tippy": "v2",
+    "vue-touch": "^2.0.0-beta.4",
+    "vue2-filters": "^0.9.1"
+  }
+}

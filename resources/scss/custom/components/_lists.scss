@@ -1,0 +1,26 @@
+.list-group {
+    a {
+        color: #111114;
+        &:hover {
+            color: #3131dc;
+        }
+    }
+    .list-group-item {
+        &.list-group-item-sm {
+            padding: 0.2em 0.75em !important;
+            transition: all .5s;
+            cursor: pointer;
+            a {
+                color: #111114;
+                &:hover {
+                    color: #3131dc;
+                }
+            }
+        }
+        &.current-item {
+            background: #222222;
+            color: #ffffff;
+        }
+    }
+}
+
