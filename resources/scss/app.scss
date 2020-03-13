@@ -14,8 +14,8 @@ File: Main Css File
 //Core files
 @import "./node_modules/bootstrap/scss/functions";
 @import "./node_modules/bootstrap/scss/variables";
-@import "variables";
 @import "./node_modules/bootstrap/scss/mixins.scss";
+@import "variables";
 
 // Structure
 @import "custom/structure/general";
@@ -42,7 +42,7 @@ File: Main Css File
 @import "custom/components/alerts";
 @import "custom/components/lists";
 @import "custom/components/videos";
-
+@import "custom/components/buttons";
 @import "custom/components/quill";
 
 // pages

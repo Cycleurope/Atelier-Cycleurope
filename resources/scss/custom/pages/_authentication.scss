@@ -8,9 +8,10 @@
 
 // authentication pages background
 body.authentication-bg {
-    background-image: url("../images/big/bg1.jpg");
+    background-image: url("../../../img/login-background.jpg") !important;
     background-size: cover;
-    background-position: center;
+    background-position: bottom right;
+
 }
 
 .home-btn {

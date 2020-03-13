@@ -1,0 +1,1 @@
+<img<?php echo $attributeString; ?> loading="<?php echo e($loadingAttributeValue); ?>" src="<?php echo e($media->getUrl($conversion)); ?>" alt="<?php echo e($media->name); ?>"><?php /**PATH /Users/rlomvin/webapps/Atelier-Cycleurope/vendor/spatie/laravel-medialibrary/src/../resources/views/image.blade.php ENDPATH**/ ?>

@@ -3,13 +3,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+require('bootstrap');
 var Masonry = require( 'masonry-layout' );
 
-$(document).ready(function() {
 
+$(document).ready(function() {
   $.ajaxSetup({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
   });
+
 
   if ($( "#chart-requests-pending-inreview" ).length) {
     Morris.Donut({
@@ -259,6 +261,12 @@ $(document).ready(function() {
     columnWidth: '.grid-sizer',
   });
 
+  var grid = document.querySelector('#favorite-products-grid');
+  var msnry2 = new Masonry( grid, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+  });
+
   $('.video-item img, .video-item h4').click(function() {
     var $embed = "";
     $youtubeID    = $(this).data('videoid');
@@ -301,16 +309,18 @@ $(document).ready(function() {
       $("#season-selector li").removeClass('current-item');
       $(this).addClass('current-item');
     }
-    console.log($currentSeason);
+    console.log("Current Season : "+$currentSeason);
     filterProducts();
   });
 
   function filterProducts() {
     if($currentFamily == null && $currentSeason == null) {
+      console.log("Aucun filtre sélectionné >>> ");
       $('.product').each(function() {
           $(this).show();
       });
     } else if($currentFamily != null && $currentSeason == null) {
+      console.log("Filtre FAMILLE >>> ");
       $('.product').hide();
       $('.product').each(function() {
         if($(this).hasClass($currentFamily)) {
@@ -318,24 +328,26 @@ $(document).ready(function() {
         }
       });
     } else if($currentFamily == null && $currentSeason != null) {
+      console.log("Filtre SAISON >>> ");
       $('.product').hide();
       if($(this).hasClass($currentSeason)) {
         $(this).show();
       }
     } else {
+      console.log("Filtres FAMILLE + SAISON >>> ");
       $('.product').hide();
       console.log(4);
-      if( ($(this).hasClass($currentSeason)) && ($(this).hasClass($currentFamily))) {
-        $('.product').each(function() {
-            $(this).show();
-        });
-      }
+      $('.product').each(function() {
+        if( ($(this).hasClass($currentSeason)) && ($(this).hasClass($currentFamily))) {
+              $(this).show();
+        }
+      })
     }
   }
 
 
-  $('a.fav-video').click(function() {
-    console.log('Fav ?');
+  $('a.fav-video').click(function(e) {
+    e.preventDefault();
     $(this).toggleClass('btn-danger');
     $(this).toggleClass('btn-light');
     $.ajax({
@@ -347,5 +359,42 @@ $(document).ready(function() {
       }
     })
   });
+
+  $('a.fav-ev').click(function(e) {
+    e.preventDefault();
+    $(this).toggleClass('btn-danger');
+    $(this).toggleClass('btn-light');
+    $.ajax({
+      data: {id: $(this).data('ev')},
+      type: 'POST',
+      url: '/vues-eclatees/toggle-favorite',
+      success: function(data) {
+        $.notify({
+          title: '<strong> Et voilà</strong>',
+          message: 'Le produit a été ajouté à la liste des favoris.'
+        },{
+          type: 'success'
+        });
+      }
+    })
+  });
+
+  $('a.remfav-ev').click(function(e) {
+    e.preventDefault();
+    // $(this).toggleClass('btn-danger');
+    // $(this).toggleClass('btn-light');
+    $.ajax({
+      data: {id: $(this).data('ev')},
+      type: 'POST',
+      dataType: 'json',
+      url: '/vues-eclatees/remove-favorite',
+    });
+    $(this).parent().fadeOut(function(){
+      $(this).parent().remove();
+      $(this).parent().parent().remove();
+      msnry2.layout();
+    });
+  });
+
 
 });

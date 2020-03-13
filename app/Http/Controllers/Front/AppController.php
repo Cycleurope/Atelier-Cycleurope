@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\Masterclass;
 use App\Models\Document;
+use App\Models\Product;
 use Auth;
 
 class AppController extends Controller
@@ -41,13 +42,15 @@ class AppController extends Controller
 
     public function favorites()
     {
+        $products = Auth::user()->favorite(Product::class);
         $masterclasses = Auth::user()->favorite(Masterclass::class);
         $documents = Auth::user()->favorite(Document::class);
         $videos = Auth::user()->favorite(Video::class);
         return view('front.me.favorites', [
             'favorite_masterclasses' => $masterclasses,
             'favorite_documents' => $documents,
-            'favorite_videos' => $videos
+            'favorite_videos' => $videos,
+            'favorite_products' => $products
         ]);
     }
 

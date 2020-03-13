@@ -34,9 +34,13 @@ Route::group(["namespace" => "Front"], function() {
     //Exploded Views
     Route::get('/vues-eclatees/', 'ExplodedViewController@index')->name('front.explodedviews.index');
     Route::get('/vues-eclatees/par-marque/{id}', 'ExplodedViewController@byBrand')->name('front.explodedviews.brand');
+    Route::get('/vues-eclatees/favorites', 'ExplodedViewController@favorites')->name('front.explodedviews.favorites');
     Route::get('/vues-eclatees/{id}', 'ExplodedViewController@show')->name('front.explodedviews.show');
+    Route::post('/vues-eclatees/toggle-favorite', 'ExplodedViewController@toggleFavorite')->name('front.explodedviews.toggle-favorite.ajax');
+    Route::post('/vues-eclatees/remove-favorite', 'ExplodedViewController@removeFavorite')->name('front.explodedviews.remove-favorite.ajax');
     // Documents
     Route::get('/documents', 'DocumentController@index')->name('front.documents.index');
+    Route::get('/documents/favorites', 'DocumentController@favorites')->name('front.documents.favorites');
     Route::get('/documents/brand/{id}', 'DocumentController@byBrand')->name('front.documents.brand');
     // FAQ
     Route::get('/foire-aux-questions', 'QuestionAnswerController@index')->name('front.faq.index');

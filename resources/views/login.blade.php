@@ -14,12 +14,13 @@
 
     </head>
 
-    <body class="authentication-bg2">
+    <body class="authentication-bg">
 
         <div class="account-pages mt-5 mb-5">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="col-xs-12 col-lg-6">
+                        <img src="{{ asset('img/login-picture.png') }}" alt="" width="100%">
                         <div class="text-center">
                             <a href="index.html">
                                 <span><img src="assets/images/logo-light.png" alt="" height="22"></span>
@@ -46,7 +47,7 @@
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-primary btn-block" type="submit"> Se connecter </button>
+                                        <button class="btn btn-lg btn-primary btn-block btn-rounded" type="submit"> Se connecter </button>
                                     </div>
 
                                 </form>

@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-12 mb-3">
-            <a href="{{ route('favorites') }}" class="btn btn-info">Gérer mes favoris</a>
+            <a href="{{ route('favorites') }}" class="btn btn-info btn-rounded width-lg">Gérer mes favoris</a>
         </div>
     </div>
     <div class="row">
@@ -47,7 +47,7 @@
                     <li>{{ $mc->title }}</li>
                     @endforeach
                     <hr>
-                    <a href="{{ route('front.masterclasses.index') }}" class="btn btn-sm btn-info">Toutes les formations</a>
+                    <a href="{{ route('front.masterclasses.index') }}" class="btn btn-info btn-rounded width-lg">Toutes les formations</a>
                 </div>
             </div>
             <div class="card">
@@ -88,7 +88,7 @@
                     <li>{{ $v->title }}</li>
                     @endforeach
                     <hr>
-                    <a href="{{ route('front.videos.index') }}" class="btn btn-sm btn-info">Toutes les vidéos</a>
+                    <a href="{{ route('front.videos.index') }}" class="btn btn-info width-lg btn-rounded">Toutes les vidéos</a>
                 </div>
             </div>
         </div>

@@ -4,10 +4,22 @@
 
 .btn {
     color: $white;
-
     .mdi {
         &:before {
             margin-top: -1px;
+        }
+    }
+    &.btn-info {
+        background: $cyan;
+        border: 0;
+        box-shadow: none;
+        &:hover {
+            box-shadow: none !important;
+            background-color: darken($color: $cyan, $amount: 5%);
+        }
+        &:active {
+            box-shadow: none !important;
+            background-color: darken($color: $cyan, $amount: 35%) !important;
         }
     }
 }

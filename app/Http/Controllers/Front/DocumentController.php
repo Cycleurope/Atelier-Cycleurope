@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DocumentType;
 use App\Models\Brand;
+use Auth;
+
 class DocumentController extends Controller
 {
 
@@ -35,6 +37,14 @@ class DocumentController extends Controller
         return view('front.documents.by-brand', [
             'doctypes' => $doctypes,
             'brand' => $brand,
+        ]);
+    }
+
+    public function favorites()
+    {
+        $favorite_documents = Auth::user()->favorite(Document::class);
+        return view('front.documents.favorites', [
+            'favorite_documents' => $favorite_documents
         ]);
     }
 

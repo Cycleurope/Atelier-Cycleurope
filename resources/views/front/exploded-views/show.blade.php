@@ -47,6 +47,11 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('front.explodedviews.brand', $product->brand) }}" class="btn btn-rounded btn-info">Retour</a>
+        </div>
+    </div>
 </div>
 
 

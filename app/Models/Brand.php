@@ -20,6 +20,11 @@ class Brand extends Model implements HasMedia
         return $this->hasMany(Document::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id', 'id');
+    }
+
     public function videos()
     {
         return $this->hasMany(Video::class);
