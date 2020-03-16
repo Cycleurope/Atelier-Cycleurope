@@ -148,6 +148,22 @@
                         <a href="{{ route('front.phonebook.index') }}"><i class="mdi mdi-library-books"></i> Annuaire</a>
                     </li>
 
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi mdi-file-document-box-multiple-outline"></i> Espace Garantie<div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('front.warranties.index') }}">Tous mes demandes</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('front.warranties.create') }}">Nouvelle demande</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
 
                 </ul>
 

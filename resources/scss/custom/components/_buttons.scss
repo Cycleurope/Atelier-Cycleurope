@@ -11,7 +11,7 @@
     }
     &.btn-info {
         background: $cyan;
-        border: 0;
+        border: 1px solid darken($color: $cyan, $amount: 10%);
         box-shadow: none;
         &:hover {
             box-shadow: none !important;

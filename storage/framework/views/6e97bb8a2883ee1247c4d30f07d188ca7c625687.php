@@ -1,5 +1,4 @@
-@extends('layouts.front')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 py-3">
@@ -34,9 +33,9 @@
                     <div class="form-group">
                         <label for="">Motif</label>
                         <select name="" id="" class="form-control">
-                            @foreach($reasons as $r)
-                            <option value="{{ $r->id }}">{{ $r->name }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $reasons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($r->id); ?>"><?php echo e($r->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
 
@@ -99,4 +98,5 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/rlomvin/webapps/Atelier-Cycleurope/resources/views/front/warranties/create.blade.php ENDPATH**/ ?>

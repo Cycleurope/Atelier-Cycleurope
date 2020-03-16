@@ -52,7 +52,7 @@ Route::group(["namespace" => "Front"], function() {
     // Annuaire
     Route::get('/annuaire', 'PhonebookController@index')->name('front.phonebook.index');
 
-    Route::resource('/warranties', 'WarrantyController', ['as' => 'front']);
+    Route::resource('/warranties', 'ClaimController', ['as' => 'front']);
 
 });
 
