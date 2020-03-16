@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-    @include('layouts.header.header')
+    @include('layouts.header.header-admin')
     <div id="app" class="wrapper">
         <div class="container-fluid">
         @yield('content')

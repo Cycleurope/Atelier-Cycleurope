@@ -1,6 +1,5 @@
-@extends('layouts.app')
-@section('content')
-@include('partials/notifications-panel')
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('partials/notifications-panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
@@ -10,8 +9,8 @@
     <div class="col-8">
         <div class="card">
             <div class="card-body">
-                <form id="form-masterclass" action="{{ route('admin.masterclasses.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form id="form-masterclass" action="<?php echo e(route('admin.masterclasses.store')); ?>" method="POST" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="title">Titre</label>
                         <input type="text" class="form-control" name="title" id="title" required>
@@ -91,7 +90,8 @@
 </div>
 <div class="row">
     <div class="col-8">
-        <a href="{{ route('admin.masterclasses.index') }}" class="btn btn-rounded btn-sm btn-secondary"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Retour</a>
+        <a href="<?php echo e(route('admin.masterclasses.index')); ?>" class="btn btn-rounded btn-sm btn-secondary"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Retour</a>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/vincentlombard/Webapps/atelier/resources/views/back/masterclasses/create.blade.php ENDPATH**/ ?>

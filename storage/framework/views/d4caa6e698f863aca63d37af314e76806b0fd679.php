@@ -1,7 +1,7 @@
 <header id="topnav">
 
     <!-- Topbar Start -->
-    <div class="navbar-custom">
+    <div class="navbar-custom" style="background-color: #a0978a;">
         <div class="container-fluid">
             <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -36,7 +36,7 @@
                             <span>Mon compte</span>
                         </a>
                         <a href="<?php echo e(route('favorites')); ?>" class="dropdown-item notify-item">
-                            <i class="fe-heart"></i>
+                            <i class="fe-heart text-danger"></i>
                             <span>Mes favoris</span>
                         </a>
 
@@ -59,8 +59,7 @@
             <div class="logo-box">
                 <a href="/" class="logo text-center">
                     <span class="logo-lg">
-                        L'Atelier Cycleurope
-                        <!-- <span class="logo-lg-text-light">UBold</span> -->
+                        <img src="<?php echo e(asset('img/horizontal-logo.png')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-sm">
                     </span>
@@ -82,7 +81,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"">Formations<div class="arrow-down"></div></a>
+                        <a href="#"><i class="mdi mdi-teach"></i> Formations<div class="arrow-down"></div></a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
@@ -90,7 +89,7 @@
                                         <a href="<?php echo e(route('front.masterclasses.index')); ?>">Toutes les formations</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fe-heart mr-1"></i>Favoris</a>
+                                        <a href="#"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
                                     </li>
                                 </ul>
                             </li>
@@ -98,7 +97,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="mdi mdi-movie-outline"></i> Vues Eclatées<div class="arrow-down"></div></a>
+                        <a href="#"><i class="mdi mdi-bike"></i> Vues Eclatées<div class="arrow-down"></div></a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
@@ -106,7 +105,7 @@
                                         <a href="<?php echo e(route('front.explodedviews.index')); ?>">Toutes les vues éclatées</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fe-heart mr-1"></i>Favoris</a>
+                                        <a href="<?php echo e(route('front.explodedviews.favorites')); ?>"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
                                     </li>
                                 </ul>
                             </li>
@@ -114,7 +113,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="mdi mdi-movie-outline"></i> Documents Techniques<div class="arrow-down"></div></a>
+                        <a href="#"><i class="mdi mdi mdi-file-document-box-multiple-outline"></i> Documents Techniques<div class="arrow-down"></div></a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
@@ -122,7 +121,7 @@
                                         <a href="<?php echo e(route('front.documents.index')); ?>">Tous les documents</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fe-heart mr-1"></i>Favoris</a>
+                                        <a href="<?php echo e(route('front.documents.favorites')); ?>"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
                                     </li>
                                 </ul>
                             </li>

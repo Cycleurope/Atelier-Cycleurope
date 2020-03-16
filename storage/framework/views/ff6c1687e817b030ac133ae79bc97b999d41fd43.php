@@ -55,8 +55,7 @@
             <div class="logo-box">
                 <a href="/" class="logo text-center">
                     <span class="logo-lg">
-                        L'Atelier Cycleurope
-                        <!-- <span class="logo-lg-text-light">UBold</span> -->
+                        <img src="<?php echo e(asset('img/horizontal-logo.png')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-sm">
                     </span>
@@ -229,4 +228,4 @@
     </div>
     <!-- end navbar-custom -->
 
-</header><?php /**PATH /Users/vincentlombard/Webapps/atelier/resources/views/layouts/header/header.blade.php ENDPATH**/ ?>
+</header><?php /**PATH /Users/vincentlombard/Webapps/atelier/resources/views/layouts/header/header-admin.blade.php ENDPATH**/ ?>

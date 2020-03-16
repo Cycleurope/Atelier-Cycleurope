@@ -55,8 +55,7 @@
             <div class="logo-box">
                 <a href="/" class="logo text-center">
                     <span class="logo-lg">
-                        L'Atelier Cycleurope
-                        <!-- <span class="logo-lg-text-light">UBold</span> -->
+                        <img src="{{ asset('img/horizontal-logo.png') }}" alt="" height="30">
                     </span>
                     <span class="logo-sm">
                     </span>
@@ -210,22 +209,6 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('admin.users.create') }}" class="text-success">Nouveau compte utilisateur</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="has-submenu">
-                        <a href="#">Statistiques  <div class="arrow-down"></div></a>
-                        <ul class="submenu megamenu">
-                            <li>
-                                <ul>
-                                    <li>
-                                        <a href="{{ route('stats.logins.index') }}">Historiques de connexions</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('stats.logins.most-active') }}">Utilisateurs les plus actifs</a>
                                     </li>
                                 </ul>
                             </li>

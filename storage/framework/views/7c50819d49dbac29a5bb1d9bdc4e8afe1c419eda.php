@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-12 mb-3">
-            <a href="<?php echo e(route('favorites')); ?>" class="btn btn-info">Gérer mes favoris</a>
+            <a href="<?php echo e(route('favorites')); ?>" class="btn btn-info btn-rounded width-lg">Gérer mes favoris</a>
         </div>
     </div>
     <div class="row">
@@ -48,7 +48,7 @@
                     <li><?php echo e($mc->title); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <hr>
-                    <a href="<?php echo e(route('front.masterclasses.index')); ?>" class="btn btn-sm btn-info">Toutes les formations</a>
+                    <a href="<?php echo e(route('front.masterclasses.index')); ?>" class="btn btn-info btn-rounded width-lg">Toutes les formations</a>
                 </div>
             </div>
             <div class="card">
@@ -89,7 +89,7 @@
                     <li><?php echo e($v->title); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <hr>
-                    <a href="<?php echo e(route('front.videos.index')); ?>" class="btn btn-sm btn-info">Toutes les vidéos</a>
+                    <a href="<?php echo e(route('front.videos.index')); ?>" class="btn btn-info width-lg btn-rounded">Toutes les vidéos</a>
                 </div>
             </div>
         </div>

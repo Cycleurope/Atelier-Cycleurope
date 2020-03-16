@@ -49,7 +49,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <a href="{{ route('dashboard') }}" class="btn btn-rounded btn-secondary btn-sm"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Tableau de bord</a>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-rounded btn-secondary btn-sm"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Tableau de bord</a>
     </div>
 </div>
 @endsection

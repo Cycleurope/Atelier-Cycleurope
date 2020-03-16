@@ -2010,7 +2010,7 @@ div#video-overlay .fullwidth-container {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 120px 80px;
+  padding: 120px 300px;
 }
 div#video-overlay .fullwidth-container .caption {
   color: #ffffff;

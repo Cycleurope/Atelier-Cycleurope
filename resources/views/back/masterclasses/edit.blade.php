@@ -10,7 +10,7 @@
     <div class="col-8">
         <div class="card">
             <div class="card-body">
-                <form id="form-masterclass" action="{{ route('admin.masterclasses.update', $mc) }}" method="POST">
+                <form id="form-masterclass" action="{{ route('admin.masterclasses.update', $mc) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     {{ method_field('PUT')}}
                     <div class="form-group">
@@ -56,6 +56,21 @@
         </div>
     </div>
     <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Visuels</h4>
+                image
+                <div class="form-group">
+                    <label for="">Visuel Desktop de remplacement</label>
+                    <input type="file" class="form-control" id="desktop_image">
+                </div>
+                image
+                <div class="form-group">
+                    <label for="">Visuel Mobile de remplacement</label>
+                    <input type="file" class="form-control" id="desktop_image">
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Publication</h4>
