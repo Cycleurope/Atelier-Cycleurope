@@ -57,6 +57,7 @@
     "music-metadata-browser": "^2.0.4",
     "plyr": "^3.5.10",
     "socket.io-client": "^2.3.0",
+    "toastify-js": "^1.7.0",
     "vue-awesome": "v2",
     "vue-clipboard2": "^0.3.1",
     "vue-focuspoint-component": "^2.0.1",

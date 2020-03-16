@@ -68,6 +68,14 @@ class MasterclassController extends Controller
             'information'   => $request->information
         ]);
 
+        if($request->desktop_cover != null) {
+            $masterclass->addMedia($request->desktop_cover)->toMediaCollection('desktop_covers');
+        }
+
+        if($request->mobile_cover != null) {
+            $masterclass->addMedia($request->mobile_cover)->toMediaCollection('mobile_covers');
+        }
+
         return redirect()->route('admin.masterclasses.index')
             ->with('class', 'success')
             ->with('message', 'La formation a été créée.');
@@ -123,6 +131,14 @@ class MasterclassController extends Controller
         $mc->max_attendees = $request->max_attendees;
         $mc->information = $request->information;
         $mc->save();
+
+        if($request->desktop_cover != null) {
+            $mc->addMedia($request->desktop_cover)->toMediaCollection('desktop_covers');
+        }
+
+        if($request->mobile_cover != null) {
+            $mc->addMedia($request->mobile_cover)->toMediaCollection('mobile_covers');
+        }
 
         return redirect()->route('admin.masterclasses.index')
             ->with('class', 'info')

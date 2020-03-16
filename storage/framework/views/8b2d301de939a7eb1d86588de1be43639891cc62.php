@@ -22,18 +22,27 @@
         <div class="col-12">
 
         <div id="favorite-products-grid">
-                <div class="grid-sizer col-lg-2"></div>
-                <?php $__currentLoopData = $favorite_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-2 grid-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo e($p->name); ?></h5>
-                                <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
-                                <a class="btn btn-light remfav-ev" data-ev="<?php echo e($p->id); ?>" ><i class="mdi mdi-close"></i></a>
+            <div class="grid-sizer col-lg-2"></div>
+            <?php $__currentLoopData = $favorite_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-4 col-lg-3 col-xl-2 grid-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h5 class="card-title">
+                                        <span class="text-primary"><?php echo e($p->brand->name); ?></span><br /><?php echo e($p->name); ?>
+
+                                        <a class="btn btn-light remfav-ev float-right " data-ev="<?php echo e($p->id); ?>" ><i class="mdi mdi-close"></i></a>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-12">
+                                    <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
+                                </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
         <?php endif; ?>

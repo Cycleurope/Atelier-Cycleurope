@@ -20,7 +20,14 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Vues Eclatées</h3>
-                    {{ Auth::user()->favorite(App\Models\Product::class) }}
+                    @foreach($favorite_explodedviews as $ev)
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-2"><img src="{{ $ev->getFirstMediaUrl('photos') }}" alt="" width="100%"></div>
+                            <div class="col-10"><a href="{{ route('front.explodedviews.show', $ev) }}">{{ $ev->brand->name }} {{ $ev->name }}</a> <span class="float-right">{{ $ev->family->name }}</span></div>
+                        </div>
+                    </li>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -29,7 +36,7 @@
                 <div class="card-body">
                     <h3>Vidéos</h3>
                     @foreach(Auth::user()->favorite(App\Models\Video::class) as $fav_video)
-                    <li>{{ $fav_video->title }}</li>
+                    <li class="list-group-item">{{ $fav_video->title }}</li>
                     @endforeach
                 </div>
             </div>
@@ -44,7 +51,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Nouvelles formations disponibles</h3>
                     @foreach($masterclasses as $mc)
-                    <li>{{ $mc->title }}</li>
+                    <li class="list-group-item">{{ $mc->title }}</li>
                     @endforeach
                     <hr>
                     <a href="{{ route('front.masterclasses.index') }}" class="btn btn-info btn-rounded width-lg">Toutes les formations</a>

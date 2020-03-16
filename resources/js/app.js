@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 var Masonry = require( 'masonry-layout' );
-
+var Toastify = require('toastify-js');
 
 $(document).ready(function() {
   $.ajaxSetup({
@@ -347,8 +347,8 @@ $(document).ready(function() {
 
   $('a.fav-video').click(function(e) {
     e.preventDefault();
-    $(this).toggleClass('btn-danger');
-    $(this).toggleClass('btn-light');
+    $(this).toggleClass('text-danger');
+    $(this).toggleClass('text-secondary');
     $.ajax({
       data: {id: $(this).data('video')},
       type: 'POST',
@@ -361,8 +361,27 @@ $(document).ready(function() {
 
   $('a.fav-ev').click(function(e) {
     e.preventDefault();
-    $(this).toggleClass('btn-danger');
-    $(this).toggleClass('btn-light');
+    $(this).toggleClass('text-danger');
+    $(this).toggleClass('text-secondary');
+    if( $(this).hasClass('text-danger') ) {
+      Toastify({
+        text: "La fiche a été ajoutée à vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#00a378",
+      }).showToast();
+    } else {
+      Toastify({
+        text: "La fiche a été supprimée de vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#ed5a42",
+      }).showToast();
+    };
     $.ajax({
       data: {id: $(this).data('ev')},
       type: 'POST',
@@ -388,7 +407,15 @@ $(document).ready(function() {
       dataType: 'json',
       url: '/vues-eclatees/remove-favorite',
     });
-    $(this).parent().fadeOut(function(){
+    Toastify({
+      text: "La fiche a été supprimés de vos favoris.",
+      duration: 4500,
+      newWindow: true,
+      gravity: "top",
+      position: 'right',
+      backgroundColor: "#ed5a42",
+    }).showToast();
+    $(this).parent().parent().parent().fadeOut(function(){
       $(this).parent().remove();
       $(this).parent().parent().remove();
       msnry2.layout();

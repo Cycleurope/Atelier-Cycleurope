@@ -24,11 +24,13 @@ class AppController extends Controller
         $videos = Video::orderBy('id', 'desc')->limit(2)->get();
         $masterclasses = Masterclass::orderBy('id', 'desc')->limit(2)->get();
         $last_documents = Document::orderBy('id', 'desc')->limit(5)->get();
+        $favorite_explodedviews = Auth::user()->favorite(Product::class);
 
         return view('front.home', [
             'videos' => $videos,
             'masterclasses' => $masterclasses,
             'last_documents' => $last_documents,
+            'favorite_explodedviews' => $favorite_explodedviews,
         ]);
         
     }

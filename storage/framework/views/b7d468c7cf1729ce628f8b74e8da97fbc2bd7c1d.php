@@ -20,8 +20,14 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Vues Eclatées</h3>
-                    <?php echo e(Auth::user()->favorite(App\Models\Product::class)); ?>
-
+                    <?php $__currentLoopData = $favorite_explodedviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ev): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-2"><img src="<?php echo e($ev->getFirstMediaUrl('photos')); ?>" alt="" width="100%"></div>
+                            <div class="col-10"><a href="<?php echo e(route('front.explodedviews.show', $ev)); ?>"><?php echo e($ev->brand->name); ?> <?php echo e($ev->name); ?></a> <span class="float-right"><?php echo e($ev->family->name); ?></span></div>
+                        </div>
+                    </li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
@@ -30,7 +36,7 @@
                 <div class="card-body">
                     <h3>Vidéos</h3>
                     <?php $__currentLoopData = Auth::user()->favorite(App\Models\Video::class); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fav_video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($fav_video->title); ?></li>
+                    <li class="list-group-item"><?php echo e($fav_video->title); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
@@ -45,7 +51,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Nouvelles formations disponibles</h3>
                     <?php $__currentLoopData = $masterclasses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($mc->title); ?></li>
+                    <li class="list-group-item"><?php echo e($mc->title); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <hr>
                     <a href="<?php echo e(route('front.masterclasses.index')); ?>" class="btn btn-info btn-rounded width-lg">Toutes les formations</a>

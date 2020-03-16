@@ -1,26 +1,26 @@
-@extends('layouts.front')
-@section('content')
-@include('partials/notifications-panel')
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('partials/notifications-panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ $masterclass->getFirstMediaUrl('desktop_covers') }}" alt="" width="100%">
+            <img src="<?php echo e($masterclass->getFirstMediaUrl('desktop_covers')); ?>" alt="" width="100%">
         </div>
         <div class="col-6 px-4 py-4">
-            <h1>{{ $masterclass->title }}</h1>
-            <span class="sub-header">{{ $masterclass->summary }}</span>
+            <h1><?php echo e($masterclass->title); ?></h1>
+            <span class="sub-header"><?php echo e($masterclass->summary); ?></span>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {!! $masterclass->program !!}
+                    <?php echo $masterclass->program; ?>
+
                 </div>
             </div>
-            @if( !$masterclass->hasAttendeesFromMine() )
-            <form action="{{ route("front.masterclasses.register.post", $masterclass->id) }}" method="POST">
-                @csrf
+            <?php if( !$masterclass->hasAttendeesFromMine() ): ?>
+            <form action="<?php echo e(route("front.masterclasses.register.post", $masterclass->id)); ?>" method="POST">
+                <?php echo csrf_field(); ?>
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Je m'inscris à cette formation</h3>
@@ -72,31 +72,32 @@
                 </div>
             </div>
             </form>
-            @else
+            <?php else: ?>
             <div class="badge badge-success-full badge-block badge-lg badge-pill mb-3">Je participe déjà à cette formation.</div>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Mes inscriptions à cette formation</h5>
                     <ul class="list-group mb-2">
-                    @foreach($masterclass->attendeesFromMine() as $my_attendee)
-                    <li class="list-group-item">{{ $my_attendee->firstname }} {{ $my_attendee->lastname }} - {{ $my_attendee->email }} - {{ $my_attendee->phone }}</li>
-                    @endforeach
+                    <?php $__currentLoopData = $masterclass->attendeesFromMine(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $my_attendee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="list-group-item"><?php echo e($my_attendee->firstname); ?> <?php echo e($my_attendee->lastname); ?> - <?php echo e($my_attendee->email); ?> - <?php echo e($my_attendee->phone); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
-                    <form action="{{ route('front.masterclasses.deregister.post', $masterclass->id) }}" method="POST">
-                        @csrf
+                    <form action="<?php echo e(route('front.masterclasses.deregister.post', $masterclass->id)); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="btn btn-sm btn-danger btn-rounded width-sm float-right">Me désinscrire de la formation</button>
                     </form>
                 </div>
             </div>
-            @endif
+            <?php endif; ?>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('front.masterclasses.index') }}" class="btn btn-sm btn-secondary btn-rounded width-sm">Retour</a>
+            <a href="<?php echo e(route('front.masterclasses.index')); ?>" class="btn btn-sm btn-secondary btn-rounded width-sm">Retour</a>
         </div>
     </div>
 </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/rlomvin/webapps/Atelier-Cycleurope/resources/views/front/masterclasses/show.blade.php ENDPATH**/ ?>

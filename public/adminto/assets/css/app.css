@@ -1763,6 +1763,15 @@ body {
   color: #343a40;
 }
 
+.badge-block {
+  display: block;
+}
+
+.badge-lg {
+  padding: 0.85em !important;
+  font-size: 1em;
+}
+
 .badge {
   border-radius: 0.15em;
 }
@@ -1772,7 +1781,7 @@ body {
 }
 .badge.badge-success-full {
   color: #ffffff;
-  background: #248a44;
+  background: #29c069;
 }
 .badge.badge-info-full {
   color: #ffffff;
@@ -1793,6 +1802,10 @@ body {
 .badge.badge-purple-full {
   color: #e8e8e8;
   background: #5e039f;
+}
+.badge.badge-pill {
+  border-radius: 80px !important;
+  font-weight: normal;
 }
 
 .form-control-light {
@@ -2021,6 +2034,7 @@ div#video-overlay .fullwidth-container .caption h2 {
 
 .btn {
   color: #fff;
+  box-shadow: none !important;
 }
 .btn .mdi:before {
   margin-top: -1px;

@@ -23,18 +23,26 @@
         <div class="col-12">
 
         <div id="favorite-products-grid">
-                <div class="grid-sizer col-lg-2"></div>
-                @foreach($favorite_products as $p)
-                    <div class="col-lg-2 grid-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $p->name }}</h5>
-                                <img src="{{ $p->getFirstMediaUrl('photos') }}" alt="" width="100%">
-                                <a class="btn btn-light remfav-ev" data-ev="{{ $p->id }}" ><i class="mdi mdi-close"></i></a>
+            <div class="grid-sizer col-lg-2"></div>
+            @foreach($favorite_products as $p)
+                <div class="col-md-4 col-lg-3 col-xl-2 grid-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h5 class="card-title">
+                                        <span class="text-primary">{{ $p->brand->name }}</span><br />{{ $p->name }}
+                                        <a class="btn btn-light remfav-ev float-right " data-ev="{{ $p->id }}" ><i class="mdi mdi-close"></i></a>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-12">
+                                    <img src="{{ $p->getFirstMediaUrl('photos') }}" alt="" width="100%">
+                                </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            @endforeach
             </div>
         </div>
         @endif

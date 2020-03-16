@@ -24,7 +24,7 @@
                <div class="card-body">
                 <h3><?php echo e($p->name); ?></h3>
                 <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
-                <a class="fav-ev btn btn-xs <?php echo e($p->isFavorited() ? 'btn-danger' : 'btn-light'); ?>" data-ev="<?php echo e($p->id); ?>" href="#"><i class="mdi mdi-heart mdi-12px"></i></a>
+                <a class="fav-ev btn btn-xs <?php echo e($p->isFavorited() ? 'text-danger' : 'text-secondary'); ?>" data-ev="<?php echo e($p->id); ?>" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
                </div>
            </div>
         </a>

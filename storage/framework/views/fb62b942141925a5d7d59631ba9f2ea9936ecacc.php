@@ -39,6 +39,10 @@
                             <i class="fe-heart text-danger"></i>
                             <span>Mes favoris</span>
                         </a>
+                        <a href="<?php echo e(route('front.masterclasses.records')); ?>" class="dropdown-item notify-item">
+                            <i class="mdi mdi-teach"></i>
+                            <span>Mes inscriptions</span>
+                        </a>
 
                         <div class="dropdown-divider"></div>
 
@@ -90,6 +94,10 @@
                                     </li>
                                     <li>
                                         <a href="#"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <a href="<?php echo e(route('front.masterclasses.records')); ?>">Mes inscriptions</a>
                                     </li>
                                 </ul>
                             </li>

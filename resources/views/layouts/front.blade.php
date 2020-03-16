@@ -16,6 +16,8 @@
     <link href="{{ asset("adminto/assets/libs/quill/quill.snow.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("adminto/assets/libs/sweetalert2/sweetalert2.min.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("css/jquery-ui.min.css") }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('toastify/toastify.css') }}">
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <title>L'Atelier Cycleurope</title>
     <style>

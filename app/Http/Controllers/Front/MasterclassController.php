@@ -81,12 +81,29 @@ class MasterclassController extends Controller
         return redirect()->route('front.masterclasses.index');
     }
 
+    public function deregister($id)
+    {
+        $masterclass = Masterclass::find($id);
+        $records = Record::where('user_id', Auth::user()->id)->where('masterclass_id', $id)->delete();
+        return redirect()->route('front.masterclasses.show', $id)
+            ->with('class', 'danger')
+            ->with('message', 'Vous n\'êtes plus enregistré à cette session de formation.');
+    }
+
     // Ajax
     public function toggleFavorite(Request $request)
     {
         $masterclass = Masterclass::find($request->id);
         $masterclass->toggleFavorite();
         die();
+    }
+
+    public function records()
+    {
+        $records = Auth::user()->records()->get();
+        return view('front.masterclasses.records', [
+            'records' => $records
+        ]);
     }
 
 }

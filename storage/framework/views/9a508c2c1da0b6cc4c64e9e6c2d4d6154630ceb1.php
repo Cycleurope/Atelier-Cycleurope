@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-    <?php echo $__env->make('layouts.header.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('layouts.header.header-admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div id="app" class="wrapper">
         <div class="container-fluid">
         <?php echo $__env->yieldContent('content'); ?>

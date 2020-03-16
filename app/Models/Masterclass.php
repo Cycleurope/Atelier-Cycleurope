@@ -9,7 +9,7 @@ use App\Models\Attendee;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use Auth;
 
-class Masterclass extends Model
+class Masterclass extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use Favoriteable;
@@ -89,6 +89,17 @@ class Masterclass extends Model
         })->get();
 
         return $attendees;
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('desktop_covers')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile();
+
+        $this->addMediaCollection('mobile_covers')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile();
     }
 
 }

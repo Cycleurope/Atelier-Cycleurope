@@ -3,34 +3,37 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 py-3">
-            <h1>Formations</h1>
+            <h1>Sessions de Formation</h1>
         </div>
     </div>
     <div class="row">
         @if(count($masterclasses) > 0)
         @foreach($masterclasses as $mc)
-        <div class="col-12">
+        <div class="col-4">
             <div class="card">
-                <div class="card mb-2">
-                    <div class="card-header bg-light collapsed">
-                        <h5 class="card-title m-0">
-                            <a href="#" class="text-dark">
-                                {{ $mc->title }} | <i class="mdi mdi-calendar-blank"></i> {{ $mc->starts_at }} | <i class="mdi mdi-map-marker"></i> {{ $mc->location }}
-                                <div class="badge float-right badge-info">{{ $mc->attendees()->count() }}/{{$mc->max_attendees }}</div>
-                                @if($mc->hasAttendeesFromMine())
-                                <span class="badge badge-primary-full float-right mr-1">Je participe déja à cette formation.</span>
-                                @endif
-                            </a>
-                        </h5>
-                    </div>
-                    <div>
-                        <div class="card-body">
-                            {{ $mc->summary }}
-                            <hr>
-                            <a href="{{ route('front.masterclasses.show', $mc->id) }}" class="btn btn-rounded btn-info width-sm">Plus d'informations</a>
-                            <a href="#" class="btn btn-rounded btn-purple width-sm">S'inscrire</a>
-                        </div>
-                    </div>
+                <a href="{{ route('front.masterclasses.show', $mc) }}">
+                    <img src="{{ $mc->getFirstMediaUrl('desktop_covers') }}" alt="" width="100%">
+                </a>
+                <div class="card-header bg-light collapsed">
+                    <h2 class="card-title m-0">
+                        <a href="{{ route('front.masterclasses.show', $mc) }}" class="text-dark">
+                            {{ $mc->title }}
+                        </a>
+                    </h2>
+                    <h4>
+                        <i class="mdi mdi-calendar-blank"></i> {{ $mc->starts_at }} | <i class="mdi mdi-map-marker"></i> {{ $mc->location }}
+                    </h4>
+                </div>
+                <div class="card-body py-4 px-4">
+                    {{ $mc->summary }}
+                </div>
+                <div class="card-footer">
+                    @if(!$mc->hasAttendeesFromMine())
+                    Encore {{ $mc->max_attendees - $mc->attendees()->count() }} places disponibles
+                    <a href="{{ route('front.masterclasses.show', $mc->id) }}" class="btn btn-sm btn-rounded btn-purple width-sm float-right">S'inscrire</a>
+                    @else
+                    <span class="badge badge-pill badge-success"><i class="mdi mdi-check"></i> Je participe déjà à cette session de formation.</span>
+                    @endif
                 </div>
             </div>
         </div>

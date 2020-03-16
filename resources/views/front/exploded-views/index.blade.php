@@ -25,7 +25,7 @@
                <div class="card-body">
                 <h3>{{ $p->name }}</h3>
                 <img src="{{ $p->getFirstMediaUrl('photos') }}" alt="" width="100%">
-                <a class="fav-ev btn btn-xs {{$p->isFavorited() ? 'btn-danger' : 'btn-light'}}" data-ev="{{ $p->id }}" href="#"><i class="mdi mdi-heart mdi-12px"></i></a>
+                <a class="fav-ev btn btn-xs {{$p->isFavorited() ? 'text-danger' : 'text-secondary'}}" data-ev="{{ $p->id }}" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
                </div>
            </div>
         </a>
