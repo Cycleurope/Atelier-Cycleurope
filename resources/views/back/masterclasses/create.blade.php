@@ -32,10 +32,16 @@
                     <div class="form-group">
                         <label for="starts_at" class="control-label">Date</label>
                         <div class="input-group">
-                            <div class="input-daterange input-group" id="date-range">
-                                <input type="text" class="form-control" name="starts_at" required>
-                                <input type="text" class="form-control" name="ends_at" required>
-                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Du</span>
+                                </div>
+                                <input type="date" class="form-control" name="starts_at" required>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Au</span>
+                                </div>
+                                <input type="date" class="form-control" name="ends_at" required>
+-                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,24 +66,34 @@
                 <h4 class="card-title">Visuels</h4>
                 <div class="form-group">
                     <label for="">Visuel Desktop</label>
-                    <input type="file" class="form-control" id="desktop_cover" name="desktop_cover">
+                    <input type="file" class="form-control" 
+                        id="desktop_cover" 
+                        name="desktop_cover">
                 </div>
                 <div class="form-group">
                     <label for="">Visuel Mobile</label>
-                    <input type="file" class="form-control" id="mobile_cover" name="mobile_cover">
+                    <input type="file" class="form-control" 
+                        id="mobile_cover" 
+                        name="mobile_cover">
                 </div>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Publication</h4>
+
                 <div class="form-group">
-                    <label for="">Date de publication</label>
-                    <input type="text" class="form-control" id="datepicker-autoclose" required>
+                    <label for="published_at">Date de publication</label>
+                    <input type="date" class="form-control" 
+                        name="published_at" 
+                        required>
                 </div>
+
                 <div class="form-group">
-                    <label for="">Début des inscriptions</label>
-                    <input type="text" class="form-control" id="datepicker-autoclose" required>
+                    <label for="records_start_at">Début des inscriptions</label>
+                    <input type="date" class="form-control" 
+                        name="records_start_at" 
+                        required>
                 </div>
             </div>
         </div>

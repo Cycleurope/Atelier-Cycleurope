@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <form id="feedback-form" action="{{ route('admin.feedbacks.update', $feedback) }}" method='POST'>
+    <form id="form-feedback" action="{{ route('admin.feedbacks.update', $feedback) }}" method='POST'>
     @csrf
     {{ method_field('PUT') }}
     <div class="row">
@@ -25,8 +25,8 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Contenu</label>
-                        <input type="hidden" name="content" id="feedback-content">
-                        <div id="feedback-quill-content">
+                        <input type="hidden" name="content" id="input-feedback-content">
+                        <div id="quill-feedback-content">
                             {!! html_entity_decode($feedback->content, ENT_QUOTES, 'UTF-8') !!} 
                         </div>
                     </div>

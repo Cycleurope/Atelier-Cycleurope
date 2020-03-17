@@ -26,7 +26,9 @@ class Masterclass extends Model implements HasMedia
         'max_attendees',
         'status',
         'starts_at',
-        'ends_at'
+        'ends_at',
+        'records_start_at',
+        'published_at'
     ];
 
     public $timestamps = false;
@@ -100,6 +102,34 @@ class Masterclass extends Model implements HasMedia
         $this->addMediaCollection('mobile_covers')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile();
+    }
+
+    public function publishStatusBadge()
+    {
+        $now = date('Y-m-d');
+        if($this->published_at != null) {
+            if($this->published_at <= $now) {
+                return '<span class="badge badge-success">Publiée</span>';
+            } else {
+                return '<span class="badge badge-danger">Bientôt disponible ('.$this->published_at.')</span>';
+            }
+        } else {
+            return '<span class="badge badge-success">Publiée automatiquement</span>';
+        }
+    }
+
+    public function recordsStatusBadge()
+    {
+        $now = date('Y-m-d');
+        if($this->records_start_at != null) {
+            if($this->records_start_at <= $now) {
+                return '<span class="badge badge-success">Enregistrements Ouverts</span>';
+            } else {
+                return '<span class="badge badge-danger">Bientôt Ouvert ('.$this->records_start_at.')</span>';
+            }
+        } else {
+            return '<span class="badge badge-success">Enregistrements ouverts automatiquement</span>';
+        }
     }
 
 }

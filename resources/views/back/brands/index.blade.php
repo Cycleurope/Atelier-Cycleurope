@@ -11,7 +11,7 @@
 </div>
 <div class="row mb-4">
     <div class="col-8">
-        <a href="{{ route('brands.create') }}" class="btn btn-info btn-rounded width-sm"><i class="mdi mdi-plus-circle-outline"></i> Ajouter</a>
+        <a href="{{ route('admin.brands.create') }}" class="btn btn-info btn-rounded width-sm"><i class="mdi mdi-plus-circle-outline"></i> Ajouter</a>
 
     </div>
 </div>

@@ -14,6 +14,7 @@ class CreateMasterclassesTable extends Migration
     public function up()
     {
         Schema::create('masterclasses', function (Blueprint $table) {
+
             $table->bigIncrements('id');
             $table->string('title')->nullable();
             $table->string('summary')->nullable();
@@ -21,10 +22,13 @@ class CreateMasterclassesTable extends Migration
             $table->string('location')->nullable();
             $table->text('information')->nullable();
             $table->integer('max_attendees')->default(0)->nullable();
-            $table->datetime('starts_at')->nullable();
-            $table->datetime('ends_at')->nullable();
+            $table->date('starts_at')->nullable();
+            $table->date('ends_at')->nullable();
             $table->decimal('price')->nullable();
             $table->string('status')->default('OK');
+            $table->date('records_start_at')->nullable();
+            $table->date('published_at')->nullable();
+
         });
     }
 

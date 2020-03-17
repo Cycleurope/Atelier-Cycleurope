@@ -33,11 +33,15 @@
                     <div class="form-group">
                         <label for="starts_at" class="control-label">Date</label>
                         <div class="input-group">
-                            <div class="input-daterange input-group" id="date-range">
-                                <input type="text" class="form-control" name="starts_at" value="<?php echo e(date('d/m/Y', strtotime($mc->starts_at))); ?>">
-                                <input type="text" class="form-control" name="ends_at" value="<?php echo e(date('d/m/Y', strtotime($mc->ends_at))); ?>">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Du</span>
                             </div>
-                        </div>
+                            <input type="date" class="form-control" name="starts_at" value="<?php echo e($mc->starts_at); ?>">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Au</span>
+                            </div>
+                            <input type="date" class="form-control" name="ends_at" value="<?php echo e($mc->ends_at); ?>">
+-                       </div>
                     </div>
                     <div class="form-group">
                         <label for="location">Lieu</label>
@@ -75,12 +79,16 @@
             <div class="card-body">
                 <h4 class="card-title">Publication</h4>
                     <div class="form-group">
-                        <label for="">Date de publication</label>
-                        <input type="text" class="form-control" id="datepicker-autoclose" alue="<?php echo e(date('d/m/Y', strtotime($mc->starts_at))); ?>">
+                        <label for="published_at">Date de publication</label>
+                        <input type="date" class="form-control" 
+                            name="published_at"
+                            value="<?php echo e($mc->published_at); ?>">
                     </div>
                     <div class="form-group">
-                        <label for="">Début des inscriptions</label>
-                        <input type="text" class="form-control" id="datepicker-autoclose">
+                        <label for="records_start_at">Début des inscriptions</label>
+                        <input type="date" class="form-control" 
+                            name="records_start_at"
+                            value="<?php echo e($mc->records_start_at); ?>">
                     </div>
             </div>
         </div>

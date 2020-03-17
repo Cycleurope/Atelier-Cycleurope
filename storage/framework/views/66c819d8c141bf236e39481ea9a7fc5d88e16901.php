@@ -16,21 +16,6 @@
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
-    <div class="row">
-       <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-       <div class="col-lg-3">
-        <a href="<?php echo e(route('front.explodedviews.show', $p)); ?>">
-           <div class="card">
-               <div class="card-body">
-                <h3><?php echo e($p->name); ?></h3>
-                <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
-                <a class="fav-ev btn btn-xs <?php echo e($p->isFavorited() ? 'text-danger' : 'text-secondary'); ?>" data-ev="<?php echo e($p->id); ?>" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
-               </div>
-           </div>
-        </a>
-       </div>
-       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </div>
 </div>
 
 

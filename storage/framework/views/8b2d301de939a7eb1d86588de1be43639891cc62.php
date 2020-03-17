@@ -13,39 +13,62 @@
             <div class="alert alert-primary-full">Vous n'avez aucun favoris.</div>
         </div>
         <?php else: ?>
+
+
         <?php if(count($favorite_masterclasses)> 0): ?>
         <div class="col-12">
-            aeagaegae
-        </div>
-        <?php endif; ?>
-        <?php if(count($favorite_products) > 0): ?>
-        <div class="col-12">
+            <div id="favorite-masterclasses-grid">
+                <div class="grid-sizer col-12 col-xl-6 ">
 
-        <div id="favorite-products-grid">
-            <div class="grid-sizer col-lg-2"></div>
-            <?php $__currentLoopData = $favorite_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-md-4 col-lg-3 col-xl-2 grid-item">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h5 class="card-title">
-                                        <span class="text-primary"><?php echo e($p->brand->name); ?></span><br /><?php echo e($p->name); ?>
-
-                                        <a class="btn btn-light remfav-ev float-right " data-ev="<?php echo e($p->id); ?>" ><i class="mdi mdi-close"></i></a>
-                                    </h5>
-                                </div>
-                                <div class="col-lg-12">
-                                    <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
+                </div>
+                <?php $__currentLoopData = $favorite_masterclasses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-12 col-xl-6 grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5 class="card-title"><span class="text-primary"><?php echo e($mc->title); ?></span></h5>
+                                    </div>
                                 </div>
                             </div>
+                            <a class="btn btn-light remfav-ev float-right " data-ev="<?php echo e($mc->id); ?>" ><i class="mdi mdi-close"></i></a>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
         <?php endif; ?>
+
+
+
+        <?php if(count($favorite_products) > 0): ?>
+        <div class="col-12">
+            <div id="favorite-products-grid">
+                <div class="grid-sizer col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                </div>
+                <?php $__currentLoopData = $favorite_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5 class="card-title"><span class="text-primary"><?php echo e($p->brand->name); ?></span><br /><?php echo e($p->name); ?></h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <img src="<?php echo e($p->getFirstMediaUrl('photos')); ?>" alt="" width="100%">
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-light remfav-ev float-right " data-ev="<?php echo e($p->id); ?>" ><i class="mdi mdi-close"></i></a>
+                        </div>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
+            </div>
+        </div>
+        <?php endif; ?>
+
+        
         <?php if(count($favorite_documents)> 0): ?>
         <div class="col-12">
 aaegeaae

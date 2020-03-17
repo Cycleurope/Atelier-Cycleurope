@@ -15,16 +15,30 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="brand-item col-4 data-brand="<?php echo e($brand->id); ?>">
+                            <div><img src="<?php echo e($brand->getFirstMediaUrl('logos')); ?>" alt="" width="100%"></div>
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
             <div class="card">
                 <div class="card-body">
                     <?php if(count($videos) > 0): ?>
                     <div class="row">
                         <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div id="video-<?php echo e($v->youtubeID()); ?>" class="col-lg-3 video-item" data-videoid="<?php echo e($v->youtubeID()); ?>">
+                        <div id="video-<?php echo e($v->youtubeID()); ?>" class="col-12 col-sm-6 col-lg-4 col-xl-4 mb-4 video-item" data-videoid="<?php echo e($v->youtubeID()); ?>">
                             <img src="<?php echo e($v->getFirstMediaUrl('thumbnails')); ?>" alt="" width="100%;">
                             <h4><?php echo e($v->title); ?></h4>
-                            <a class="fav-video btn btn-xs <?php echo e($v->isFavorited() ? 'btn-danger' : 'btn-light'); ?>" data-video="<?php echo e($v->id); ?>" href="#"><i class="mdi mdi-heart mdi-12px"></i></a>
+                            <a class="fav-video btn btn-xs <?php echo e($v->isFavorited() ? 'text-danger' : 'text-secondary'); ?>" data-video="<?php echo e($v->id); ?>" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>

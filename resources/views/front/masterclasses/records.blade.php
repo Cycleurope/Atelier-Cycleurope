@@ -1,5 +1,6 @@
 @extends('layouts.front')
 @section('content')
+@include('partials/notifications-panel')
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 py-4">
@@ -13,9 +14,11 @@
         </div>
         @endif
         @foreach($records as $record)
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-4">
             <div class="card">
+                <img src="{{ $record->masterclass->getFirstMediaUrl('desktop_covers') }}" alt="" width="100%">
                 <div class="card-body">
+                    <h3>{{ $record->masterclass->title }}</h3>
                     @foreach($record->attendees as $attendee)
                         <li class="list-group-item">
                             <h4>{{ $attendee->firstname }} {{ $attendee->lastname }}</h4>
@@ -24,6 +27,15 @@
                         </li>
                     @endforeach
                 </div>
+                @if($record->canBeCancelled())
+                <div class="card-footer bg-purple">
+                    <a href="{{ route('front.masterclasses.edit', $record->masterclass) }}" class="btn btn-sm btn-rounded btn-purple">Modifier mon inscription</a>
+                </div>
+                @else
+                <div class="card-footer bg-pink text-white">
+                    Inscription définitive
+                </div>
+                @endif
             </div>
         </div>
         @endforeach

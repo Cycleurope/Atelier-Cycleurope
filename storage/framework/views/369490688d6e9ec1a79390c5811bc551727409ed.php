@@ -37,7 +37,9 @@
                             <td class="text-right"><i class="mdi mdi-account-badge-outline"></i> <span class="font-weight-bold">0</span>/<?php echo e($mc->max_attendees); ?></td>
                         </tr>
                         <tr>
-                            <td colspan="4"><?php echo e($mc->summary); ?></td>
+                            <td colspan="2"><?php echo e($mc->summary); ?></td>
+                            <td><?php echo $mc->publishStatusBadge(); ?></td>
+                            <td><?php echo $mc->recordsStatusBadge(); ?></td>
                             <td class="text-right"><a href="<?php echo e(route('admin.masterclasses.edit', $mc)); ?>" class="btn btn-xs btn-rounded btn-purple width-sm">Consulter</a></td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

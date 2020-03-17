@@ -10,7 +10,7 @@
 </div>
 <div class="row mb-4">
     <div class="col-8">
-        <a href="<?php echo e(route('brands.create')); ?>" class="btn btn-info btn-rounded width-sm"><i class="mdi mdi-plus-circle-outline"></i> Ajouter</a>
+        <a href="<?php echo e(route('admin.brands.create')); ?>" class="btn btn-info btn-rounded width-sm"><i class="mdi mdi-plus-circle-outline"></i> Ajouter</a>
 
     </div>
 </div>
@@ -58,7 +58,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-rounded btn-secondary btn-sm"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Tableau de bord</a>
+        <a href="<?php echo e(route('admin.dashboard')); ?>" class="btn btn-rounded btn-secondary btn-sm"><i class="mdi mdi-arrow-left-bold-circle-outline"></i> Tableau de bord</a>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

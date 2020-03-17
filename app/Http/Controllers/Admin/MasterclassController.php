@@ -21,7 +21,7 @@ class MasterclassController extends Controller
      */
     public function index()
     {
-        $masterclasses = Masterclass::all();
+        $masterclasses = Masterclass::where('starts_at', '>', date('Y-m-d'))->get();
         return view('back.masterclasses.index', [
             'masterclasses' => $masterclasses
         ]);
@@ -29,7 +29,7 @@ class MasterclassController extends Controller
 
     public function archives()
     {
-        $masterclasses = Masterclass::where('ends_at', '<', date('Y-m-d H:h:s'))->get();
+        $masterclasses = Masterclass::where('ends_at', '<', date('Y-m-d'))->get();
         return view('back.masterclasses.archives', [
             'masterclasses' => $masterclasses
         ]);
@@ -57,15 +57,17 @@ class MasterclassController extends Controller
         $ea = $request->ends_at;
 
         $masterclass = Masterclass::create([
-            'title'         => $request->title,
-            'summary'       => $request->summary,
-            'program'       => $request->program,
-            'price'         => $request->price,
-            'starts_at'     => substr($sa, 6, 4)."-".substr($sa, 0, 2)."-".substr($sa, 3, 2)." 00:00:00",
-            'ends_at'       => substr($ea, 6, 4)."-".substr($ea, 0, 2)."-".substr($ea, 3, 2)." 00:00:00",
-            'location'      => $request->location,
-            'max_attendees' => $request->max_attendees,
-            'information'   => $request->information
+            'title'             => $request->title,
+            'summary'           => $request->summary,
+            'program'           => $request->program,
+            'price'             => $request->price,
+            'starts_at'         => substr($sa, 6, 4)."-".substr($sa, 0, 2)."-".substr($sa, 3, 2)." 00:00:00",
+            'ends_at'           => substr($ea, 6, 4)."-".substr($ea, 0, 2)."-".substr($ea, 3, 2)." 00:00:00",
+            'location'          => $request->location,
+            'max_attendees'     => $request->max_attendees,
+            'information'       => $request->information,
+            'records_start_at'  => $request->records_start_at,
+            'published_at'      => $request->published_at
         ]);
 
         if($request->desktop_cover != null) {
@@ -120,16 +122,20 @@ class MasterclassController extends Controller
     {
         $sa = $request->starts_at;
         $ea = $request->ends_at;
+        $rsa = $request->records_start_at;
+        $pa = $request->published_at;
 
-        $mc = Masterclass::find($id);
-        $mc->title = $request->title;
-        $mc->summary = $request->summary;
-        $mc->program = $request->program;
-        $mc->price = $request->price;
-        $mc->starts_at = substr($sa, 6, 4)."-".substr($sa, 3, 2)."-".substr($sa, 0, 2)." 00:00:00";
-        $mc->ends_at = substr($ea, 6, 4)."-".substr($ea, 3, 2)."-".substr($ea, 0, 2)." 00:00:00";
-        $mc->max_attendees = $request->max_attendees;
-        $mc->information = $request->information;
+        $mc                     = Masterclass::find($id);
+        $mc->title              = $request->title;
+        $mc->summary            = $request->summary;
+        $mc->program            = $request->program;
+        $mc->price              = $request->price;
+        $mc->starts_at          = $sa;
+        $mc->ends_at            = $ea;
+        $mc->max_attendees      = $request->max_attendees;
+        $mc->information        = $request->information;
+        $mc->records_start_at   = $rsa;
+        $mc->published_at       = $pa;
         $mc->save();
 
         if($request->desktop_cover != null) {

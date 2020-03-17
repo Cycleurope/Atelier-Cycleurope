@@ -90,6 +90,70 @@ class MasterclassController extends Controller
             ->with('message', 'Vous n\'êtes plus enregistré à cette session de formation.');
     }
 
+    public function editRegister($id)
+    {
+        $masterclass = Masterclass::find($id);
+        $records = Record::where('user_id', Auth::user()->id)->where('masterclass_id', $id)->first();
+        return view('front.masterclasses.edit', [
+            'masterclass' => $masterclass,
+            'records' => $records,
+        ]);
+    }
+
+    public function updateRegister(Request $request, $id)
+    {
+        $attendee1 = false;
+        $attendee2 = false;
+        $record = Record::find($id);
+        if(isset($request->attendee1_id)) {
+            $attendee               = Attendee::find($request->attendee1_id);
+            $attendee1              = true;
+            if(($request->attendee1_lastname == "") && ($request->attendee1_firstname == "") && ($request->attendee1_email == "") && ($request->attendee1_phone == "")) {
+                $attendee->delete();
+                $attendee1 = false;
+            } else {
+                $attendee->lastname     = $request->attendee1_lastname;
+                $attendee->firstname    = $request->attendee1_firstname;
+                $attendee->email        = $request->attendee1_email;
+                $attendee->phone        = $request->attendee1_phone;
+                $attendee->save();
+            }
+        }
+
+        if(isset($request->attendee2_id)) {
+            $attendee               = Attendee::find($request->attendee2_id);
+            $attendee2              = true;
+            if(($request->attendee2_lastname == "") && ($request->attendee2_firstname == "") && ($request->attendee2_email == "") && ($request->attendee2_phone == "")) {
+                $attendee->delete();
+                $attendee2 = false;
+            } else {
+                $attendee->lastname     = $request->attendee2_lastname;
+                $attendee->firstname    = $request->attendee2_firstname;
+                $attendee->email        = $request->attendee2_email;
+                $attendee->phone        = $request->attendee2_phone;
+                $attendee->save();
+            }
+        } else {
+            $attendee = new Attendee();
+            $attendee->lastname     = $request->attendee2_lastname;
+            $attendee->firstname    = $request->attendee2_firstname;
+            $attendee->email        = $request->attendee2_email;
+            $attendee->phone        = $request->attendee2_phone;
+            $attendee->record_id    = $record->id;
+            $attendee->save();
+        }
+
+
+        if(!$attendee1 && !$attendee2) {
+            $record->delete();
+        }
+
+
+        return redirect()->route('front.masterclasses.index')
+            ->with('class', 'info')
+            ->with('message', 'Votre inscription à la session de formation a bien été modifiée.');
+    }
+
     // Ajax
     public function toggleFavorite(Request $request)
     {

@@ -95,6 +95,9 @@
                                     <li>
                                         <a href="#"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('front.feedbacks.index') }}"><i class="mdi mdi-book-outline mr-1 text-purple"></i>Retours de formation</a>
+                                    </li>
                                     <hr>
                                     <li>
                                         <a href="{{ route('front.masterclasses.records') }}">Mes inscriptions</a>

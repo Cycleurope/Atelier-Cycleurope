@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <img src="{{ $product->getFirstMediaUrl('photos') }}" alt="" width="100%">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-7">
             <div class="card">
                 <div class="card-body">
                 <table class="table table-sm table-hover">

@@ -16,13 +16,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        @foreach($brands as $brand)
+                        <div class="brand-item col-4 data-brand="{{ $brand->id }}">
+                            <div><img src="{{ $brand->getFirstMediaUrl('logos')}}" alt="" width="100%"></div>
+                        </div>
+                        @endforeach 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
             <div class="card">
                 <div class="card-body">
                     @if(count($videos) > 0)
                     <div class="row">
                         @foreach($videos as $v)
-                        <div id="video-{{ $v->youtubeID() }}" class="col-lg-3 video-item" data-videoid="{{ $v->youtubeID() }}">
+                        <div id="video-{{ $v->youtubeID() }}" class="col-12 col-sm-6 col-lg-4 col-xl-4 mb-4 video-item" data-videoid="{{ $v->youtubeID() }}">
                             <img src="{{ $v->getFirstMediaUrl('thumbnails') }}" alt="" width="100%;">
                             <h4>{{ $v->title }}</h4>
                             <a class="fav-video btn btn-xs {{$v->isFavorited() ? 'text-danger' : 'text-secondary'}}" data-video="{{ $v->id }}" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>

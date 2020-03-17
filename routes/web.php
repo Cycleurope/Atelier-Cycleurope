@@ -30,9 +30,11 @@ Route::group(["namespace" => "Front"], function() {
     // Formations
     Route::get('/formations', 'MasterclassController@index')->name('front.masterclasses.index');
     Route::get('/formations/mes-enregistrements', 'MasterclassController@records')->name('front.masterclasses.records');
+    Route::get('/formations/{id}/edit', 'MasterclassController@editRegister')->name('front.masterclasses.edit');
     Route::get('/formations/{id}', 'MasterclassController@show')->name('front.masterclasses.show');
     Route::post('/formations/{id}/register', 'MasterclassController@register')->name('front.masterclasses.register.post');
     Route::post('/formations/{id}/deregister', 'MasterclassController@deregister')->name('front.masterclasses.deregister.post');
+    Route::post('/formations/{id}/update-register', 'MasterclassController@updateRegister')->name('front.masterclasses.update-register.post');
     Route::post('/formations/toggle-favorite', 'MasterclassController@toggleFavorite')->name('front.masterclasses.toggle-favorite.ajax');
     Route::post('/formations/remove-favorite', 'MasterclassController@removeFavorite')->name('front.masterclasses.remove-favorite.ajax');
     //Exploded Views
@@ -55,6 +57,8 @@ Route::group(["namespace" => "Front"], function() {
     Route::get('/annuaire', 'PhonebookController@index')->name('front.phonebook.index');
 
     Route::resource('/warranties', 'ClaimController', ['as' => 'front']);
+
+    Route::resource('/feedbacks', 'FeedbackController', ['as' => 'front']);
 
 });
 

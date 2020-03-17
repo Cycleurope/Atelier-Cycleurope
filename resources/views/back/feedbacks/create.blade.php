@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <form id="feedback-form" action="{{ route('admin.feedbacks.store') }}" method='POST'>
+    <form id="form-feedback" action="{{ route('admin.feedbacks.store') }}" method='POST'>
     @csrf
     <div class="row">
         <div class="col-8">
@@ -29,8 +29,8 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Contenu</label>
-                        <input type="hidden" name="content" id="feedback-content">
-                        <div id="feedback-quill-content">
+                        <input type="hidden" name="content" id="input-feedback-content">
+                        <div id="quill-feedback-content" style="min-height:200px">
                         </div>
                     </div>
                 </div>

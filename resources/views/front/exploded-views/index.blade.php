@@ -17,21 +17,6 @@
         </div>
         @endforeach
     </div>
-    <div class="row">
-       @foreach($products as $p)
-       <div class="col-lg-3">
-        <a href="{{ route('front.explodedviews.show', $p) }}">
-           <div class="card">
-               <div class="card-body">
-                <h3>{{ $p->name }}</h3>
-                <img src="{{ $p->getFirstMediaUrl('photos') }}" alt="" width="100%">
-                <a class="fav-ev btn btn-xs {{$p->isFavorited() ? 'text-danger' : 'text-secondary'}}" data-ev="{{ $p->id }}" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
-               </div>
-           </div>
-        </a>
-       </div>
-       @endforeach
-    </div>
 </div>
 
 

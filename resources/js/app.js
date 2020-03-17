@@ -76,13 +76,20 @@ $(document).ready(function() {
   var quill_masterclass_info = new Quill('#quill-masterclass-info', {theme: 'snow'});
   var quill = new Quill('#quill-answer', {theme: 'snow'});
 
+  var quill_feedback_content = new Quill('#quill-feedback-content', {theme: 'snow'});
+
   $("#form-masterclass").submit(function() {
     $("#input-masterclass-program").val(quill_masterclass_program.container.firstChild.innerHTML);
+    $("#input-masterclass-info").val(quill_masterclass_info.container.firstChild.innerHTML);
     $("#input-masterclass-info").val(quill_masterclass_info.container.firstChild.innerHTML);
   });
 
   $("#form-question").submit(function() {
     $("#input-answer").val(quill.container.firstChild.innerHTML);
+  });
+
+  $("#form-feedback").submit(function() {
+    $("#input-feedback-content").val(quill_feedback_content.container.firstChild.innerHTML);
   });
 
 
@@ -291,6 +298,12 @@ $(document).ready(function() {
     columnWidth: '.grid-sizer',
   });
 
+  var grid = document.querySelector('#favorite-masterclasses-grid');
+  var msnry3 = new Masonry( grid, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+  });
+
   $('.video-item img, .video-item h4').click(function() {
     var $embed = "";
     $youtubeID    = $(this).data('videoid');
@@ -466,6 +479,7 @@ $(document).ready(function() {
 
   // Lien de favoris Vues Eclatées / Fiches Produit
   $('a.fav-masterclass').click(function(e) {
+    $self = $(this).parent();
     e.preventDefault();
     $(this).toggleClass('text-danger');
     $(this).toggleClass('text-secondary');
@@ -494,11 +508,12 @@ $(document).ready(function() {
       url: '/formations/toggle-favorite',
       success: function(data) {
       }
-    })
+    });
   });
 
   // Lien de suppression de Favoris Vues Eclatées / Fiches Produits
   $('a.remfav-ev').click(function(e) {
+    $self = $(this).parent();
     e.preventDefault();
     // $(this).toggleClass('btn-danger');
     // $(this).toggleClass('btn-light');
@@ -516,9 +531,8 @@ $(document).ready(function() {
       position: 'right',
       backgroundColor: "#ed5a42",
     }).showToast();
-    $(this).parent().parent().parent().fadeOut(function(){
-      $(this).parent().remove();
-      $(this).parent().parent().remove();
+    $self.fadeOut(function(){
+      $self.remove();
       msnry2.layout();
     });
   });
