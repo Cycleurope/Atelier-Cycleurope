@@ -28,12 +28,15 @@
                     {{ $mc->summary }}
                 </div>
                 <div class="card-footer">
+                    <a class="fav-masterclass btn btn-xs {{$mc->isFavorited() ? 'text-danger' : 'text-secondary'}}" data-masterclass="{{ $mc->id }}" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
+
                     @if(!$mc->hasAttendeesFromMine())
                     Encore {{ $mc->max_attendees - $mc->attendees()->count() }} places disponibles
                     <a href="{{ route('front.masterclasses.show', $mc->id) }}" class="btn btn-sm btn-rounded btn-purple width-sm float-right">S'inscrire</a>
                     @else
                     <span class="badge badge-pill badge-success"><i class="mdi mdi-check"></i> Je participe déjà à cette session de formation.</span>
                     @endif
+
                 </div>
             </div>
         </div>

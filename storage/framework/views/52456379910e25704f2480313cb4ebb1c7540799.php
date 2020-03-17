@@ -2,36 +2,43 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 py-3">
-            <h1>Formations</h1>
+            <h1>Sessions de Formation</h1>
         </div>
     </div>
     <div class="row">
         <?php if(count($masterclasses) > 0): ?>
         <?php $__currentLoopData = $masterclasses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-12">
+        <div class="col-4">
             <div class="card">
-                <div class="card mb-2">
-                    <div class="card-header bg-light collapsed">
-                        <h5 class="card-title m-0">
-                            <a href="#" class="text-dark">
-                                <?php echo e($mc->title); ?> | <i class="mdi mdi-calendar-blank"></i> <?php echo e($mc->starts_at); ?> | <i class="mdi mdi-map-marker"></i> <?php echo e($mc->location); ?>
+                <a href="<?php echo e(route('front.masterclasses.show', $mc)); ?>">
+                    <img src="<?php echo e($mc->getFirstMediaUrl('desktop_covers')); ?>" alt="" width="100%">
+                </a>
+                <div class="card-header bg-light collapsed">
+                    <h2 class="card-title m-0">
+                        <a href="<?php echo e(route('front.masterclasses.show', $mc)); ?>" class="text-dark">
+                            <?php echo e($mc->title); ?>
 
-                                <div class="badge float-right badge-info"><?php echo e($mc->attendees()->count()); ?>/<?php echo e($mc->max_attendees); ?></div>
-                                <?php if($mc->hasAttendeesFromMine()): ?>
-                                <span class="badge badge-primary-full float-right mr-1">Je participe déja à cette formation.</span>
-                                <?php endif; ?>
-                            </a>
-                        </h5>
-                    </div>
-                    <div>
-                        <div class="card-body">
-                            <?php echo e($mc->summary); ?>
+                        </a>
+                    </h2>
+                    <h4>
+                        <i class="mdi mdi-calendar-blank"></i> <?php echo e($mc->starts_at); ?> | <i class="mdi mdi-map-marker"></i> <?php echo e($mc->location); ?>
 
-                            <hr>
-                            <a href="<?php echo e(route('front.masterclasses.show', $mc->id)); ?>" class="btn btn-rounded btn-info width-sm">Plus d'informations</a>
-                            <a href="#" class="btn btn-rounded btn-purple width-sm">S'inscrire</a>
-                        </div>
-                    </div>
+                    </h4>
+                </div>
+                <div class="card-body py-4 px-4">
+                    <?php echo e($mc->summary); ?>
+
+                </div>
+                <div class="card-footer">
+                    <a class="fav-masterclass btn btn-xs <?php echo e($mc->isFavorited() ? 'text-danger' : 'text-secondary'); ?>" data-masterclass="<?php echo e($mc->id); ?>" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
+
+                    <?php if(!$mc->hasAttendeesFromMine()): ?>
+                    Encore <?php echo e($mc->max_attendees - $mc->attendees()->count()); ?> places disponibles
+                    <a href="<?php echo e(route('front.masterclasses.show', $mc->id)); ?>" class="btn btn-sm btn-rounded btn-purple width-sm float-right">S'inscrire</a>
+                    <?php else: ?>
+                    <span class="badge badge-pill badge-success"><i class="mdi mdi-check"></i> Je participe déjà à cette session de formation.</span>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </div>

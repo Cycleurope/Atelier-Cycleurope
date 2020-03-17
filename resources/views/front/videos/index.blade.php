@@ -25,7 +25,7 @@
                         <div id="video-{{ $v->youtubeID() }}" class="col-lg-3 video-item" data-videoid="{{ $v->youtubeID() }}">
                             <img src="{{ $v->getFirstMediaUrl('thumbnails') }}" alt="" width="100%;">
                             <h4>{{ $v->title }}</h4>
-                            <a class="fav-video btn btn-xs {{$v->isFavorited() ? 'btn-danger' : 'btn-light'}}" data-video="{{ $v->id }}" href="#"><i class="mdi mdi-heart mdi-12px"></i></a>
+                            <a class="fav-video btn btn-xs {{$v->isFavorited() ? 'text-danger' : 'text-secondary'}}" data-video="{{ $v->id }}" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
                         </div>
                         @endforeach
                     </div>

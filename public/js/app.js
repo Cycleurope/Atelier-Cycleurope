@@ -2834,6 +2834,15 @@ $(document).ready(function () {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
+  /*                        C  H  A  R  T  S     D  A  S  H  B  O  A  R  D                       */
+
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
 
   if ($("#chart-requests-pending-inreview").length) {
     Morris.Donut({
@@ -2930,6 +2939,16 @@ $(document).ready(function () {
   $("#form-question").submit(function () {
     $("#input-answer").val(quill.container.firstChild.innerHTML);
   });
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
+  /*                                 S  O  R  T  A  B  L  E  S                                   */
+
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
   $("#faq-sortable").sortable({
     axis: 'y',
     update: function update(event, ui) {
@@ -2959,7 +2978,16 @@ $(document).ready(function () {
         }
       });
     }
-  }); // SweetAlerts
+  });
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
+  /*         F  O  R  M  U  L  A  I  R  E  S  -  -  -  S  W  E  E  T  A  L  E  R  T  S           */
+
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
 
   $("#form-question-delete").submit(function (e) {
     var _this = this;
@@ -3131,10 +3159,20 @@ $(document).ready(function () {
         $('.video-container iframe').attr('src', $embed);
       });
     });
-  }); // Vues eclatées
+  });
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
+  /*                            V  U  E  S     E  C  L  A  T  E  E  S                            */
+
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
 
   $currentFamily = null;
-  $currentSeason = null;
+  $currentSeason = null; // Selecteur de Familles
+
   $("#family-selector li").click(function () {
     if ($currentFamily == "f-" + $(this).data('slug')) {
       $currentFamily = null;
@@ -3147,7 +3185,8 @@ $(document).ready(function () {
 
     filterProducts();
     console.log($currentFamily);
-  });
+  }); // Selecteur de Saisons
+
   $("#season-selector li").click(function () {
     if ($currentSeason == "s-" + $(this).data('year')) {
       $currentSeason = null;
@@ -3160,7 +3199,7 @@ $(document).ready(function () {
 
     console.log("Current Season : " + $currentSeason);
     filterProducts();
-  });
+  }); // Filtrage des Fiches Produits par Famille et par Saison
 
   function filterProducts() {
     if ($currentFamily == null && $currentSeason == null) {
@@ -3194,11 +3233,44 @@ $(document).ready(function () {
       });
     }
   }
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+
+  /*                        -  -        F  A  V  O  R  I  S        -  -                          */
+
+  /********************************************************************************************* */
+
+  /********************************************************************************************* */
+  // Lien de favoris Video
+
 
   $('a.fav-video').click(function (e) {
     e.preventDefault();
     $(this).toggleClass('text-danger');
     $(this).toggleClass('text-secondary');
+
+    if ($(this).hasClass('text-danger')) {
+      Toastify({
+        text: "La vidéo a été ajoutée à vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#00a378"
+      }).showToast();
+    } else {
+      Toastify({
+        text: "La vidéo a été supprimée de vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#ed5a42"
+      }).showToast();
+    }
+
+    ;
     $.ajax({
       data: {
         id: $(this).data('video')
@@ -3209,7 +3281,8 @@ $(document).ready(function () {
         console.log('success');
       }
     });
-  });
+  }); // Lien de favoris Vues Eclatées / Fiches Produit
+
   $('a.fav-ev').click(function (e) {
     e.preventDefault();
     $(this).toggleClass('text-danger');
@@ -3251,7 +3324,44 @@ $(document).ready(function () {
         });
       }
     });
-  });
+  }); // Lien de favoris Vues Eclatées / Fiches Produit
+
+  $('a.fav-masterclass').click(function (e) {
+    e.preventDefault();
+    $(this).toggleClass('text-danger');
+    $(this).toggleClass('text-secondary');
+
+    if ($(this).hasClass('text-danger')) {
+      Toastify({
+        text: "La formation a été ajoutée à vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#00a378"
+      }).showToast();
+    } else {
+      Toastify({
+        text: "La formation a été supprimée de vos favoris.",
+        duration: 4500,
+        newWindow: true,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#ed5a42"
+      }).showToast();
+    }
+
+    ;
+    $.ajax({
+      data: {
+        id: $(this).data('masterclass')
+      },
+      type: 'POST',
+      url: '/formations/toggle-favorite',
+      success: function success(data) {}
+    });
+  }); // Lien de suppression de Favoris Vues Eclatées / Fiches Produits
+
   $('a.remfav-ev').click(function (e) {
     e.preventDefault(); // $(this).toggleClass('btn-danger');
     // $(this).toggleClass('btn-light');
@@ -3311,9 +3421,9 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rlomvin/webapps/Atelier-Cycleurope/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/rlomvin/webapps/Atelier-Cycleurope/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/rlomvin/webapps/Atelier-Cycleurope/resources/scss/app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! /Users/vincentlombard/Webapps/atelier/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincentlombard/Webapps/atelier/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincentlombard/Webapps/atelier/resources/scss/app.scss */"./resources/scss/app.scss");
 
 
 /***/ })

@@ -33,6 +33,8 @@ Route::group(["namespace" => "Front"], function() {
     Route::get('/formations/{id}', 'MasterclassController@show')->name('front.masterclasses.show');
     Route::post('/formations/{id}/register', 'MasterclassController@register')->name('front.masterclasses.register.post');
     Route::post('/formations/{id}/deregister', 'MasterclassController@deregister')->name('front.masterclasses.deregister.post');
+    Route::post('/formations/toggle-favorite', 'MasterclassController@toggleFavorite')->name('front.masterclasses.toggle-favorite.ajax');
+    Route::post('/formations/remove-favorite', 'MasterclassController@removeFavorite')->name('front.masterclasses.remove-favorite.ajax');
     //Exploded Views
     Route::get('/vues-eclatees/', 'ExplodedViewController@index')->name('front.explodedviews.index');
     Route::get('/vues-eclatees/par-marque/{id}', 'ExplodedViewController@byBrand')->name('front.explodedviews.brand');

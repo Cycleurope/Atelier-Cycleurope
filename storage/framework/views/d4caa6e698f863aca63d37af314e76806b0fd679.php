@@ -39,6 +39,10 @@
                             <i class="fe-heart text-danger"></i>
                             <span>Mes favoris</span>
                         </a>
+                        <a href="<?php echo e(route('front.masterclasses.records')); ?>" class="dropdown-item notify-item">
+                            <i class="mdi mdi-teach"></i>
+                            <span>Mes inscriptions</span>
+                        </a>
 
                         <div class="dropdown-divider"></div>
 
@@ -91,6 +95,10 @@
                                     <li>
                                         <a href="#"><i class="fe-heart mr-1 text-danger"></i>Favoris</a>
                                     </li>
+                                    <hr>
+                                    <li>
+                                        <a href="<?php echo e(route('front.masterclasses.records')); ?>">Mes inscriptions</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -138,6 +146,22 @@
 
                     <li class="has-submenu">
                         <a href="<?php echo e(route('front.phonebook.index')); ?>"><i class="mdi mdi-library-books"></i> Annuaire</a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi mdi-file-document-box-multiple-outline"></i> Espace Garantie<div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo e(route('front.warranties.index')); ?>">Tous mes demandes</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo e(route('front.warranties.create')); ?>">Nouvelle demande</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
 
 

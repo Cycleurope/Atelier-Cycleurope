@@ -1,7 +1,11 @@
 <?php $__env->startSection('content'); ?>
+<?php echo $__env->make('partials/notifications-panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 py-3">
+        <div class="col-6">
+            <img src="<?php echo e($masterclass->getFirstMediaUrl('desktop_covers')); ?>" alt="" width="100%">
+        </div>
+        <div class="col-6 px-4 py-4">
             <h1><?php echo e($masterclass->title); ?></h1>
             <span class="sub-header"><?php echo e($masterclass->summary); ?></span>
         </div>
@@ -69,7 +73,7 @@
             </div>
             </form>
             <?php else: ?>
-            <div class="alert alert-primary-full">Je participe déjà à cette formation.</div>
+            <div class="badge badge-success-full badge-block badge-lg badge-pill mb-3">Je participe déjà à cette formation.</div>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Mes inscriptions à cette formation</h5>
@@ -78,7 +82,8 @@
                     <li class="list-group-item"><?php echo e($my_attendee->firstname); ?> <?php echo e($my_attendee->lastname); ?> - <?php echo e($my_attendee->email); ?> - <?php echo e($my_attendee->phone); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
-                    <form action="">
+                    <form action="<?php echo e(route('front.masterclasses.deregister.post', $masterclass->id)); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="btn btn-sm btn-danger btn-rounded width-sm float-right">Me désinscrire de la formation</button>
                     </form>
                 </div>

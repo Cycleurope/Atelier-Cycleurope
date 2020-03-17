@@ -24,7 +24,7 @@
                         <div id="video-<?php echo e($v->youtubeID()); ?>" class="col-lg-3 video-item" data-videoid="<?php echo e($v->youtubeID()); ?>">
                             <img src="<?php echo e($v->getFirstMediaUrl('thumbnails')); ?>" alt="" width="100%;">
                             <h4><?php echo e($v->title); ?></h4>
-                            <a class="fav-video btn btn-xs <?php echo e($v->isFavorited() ? 'btn-danger' : 'btn-light'); ?>" data-video="<?php echo e($v->id); ?>" href="#"><i class="mdi mdi-heart mdi-12px"></i></a>
+                            <a class="fav-video btn btn-xs <?php echo e($v->isFavorited() ? 'text-danger' : 'text-secondary'); ?>" data-video="<?php echo e($v->id); ?>" href="#"><i class="mdi mdi mdi-heart-outline mdi-18px px-1 py-1"></i></a>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
